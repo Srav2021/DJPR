@@ -16,8 +16,12 @@
         });
         //execute server call.
         action.setCallback(this, function(response){ 
-            let retVal=response.getReturnValue();
-            component.set('v.recordDataList', retVal.listDocdata);
+            let retVal=response.getReturnValue();            
+            let allDocsList = retVal.listDocdata;
+            allDocsList.forEach(function(data){
+              data.ContentSize = helper.getreadableFileSizeHlp(data.ContentSize);
+          });
+            component.set('v.recordDataList', allDocsList);
             component.set("v.dataLoaded", true);
         });
             $A.enqueueAction(action);
@@ -38,8 +42,12 @@
             action.setParams({clientId: component.get("v.clientId"), 'deleteRecId' : recordId,category: component.get("v.selectedCategory")}); 
             //execute server call.
             action.setCallback(this, function(response){ 
-                let retVal=response.getReturnValue();
-                component.set('v.recordDataList', retVal.listDocdata);
+                let retVal=response.getReturnValue();           
+                let allDocsList = retVal.listDocdata;
+                allDocsList.forEach(function(data){
+                  data.ContentSize = helper.getreadableFileSizeHlp(data.ContentSize);
+              });
+                component.set('v.recordDataList', allDocsList);
                 alert('File is deleted');
                 component.set("v.dataLoaded", true);
             });
@@ -54,8 +62,12 @@
         action.setParams({clientId: component.get("v.clientId"), 'updateData' : updateData,category: component.get("v.selectedCategory")}); 
         //execute server call.
         action.setCallback(this, function(response){ 
-            let retVal=response.getReturnValue();
-            component.set('v.recordDataList', retVal.listDocdata);
+            let retVal=response.getReturnValue();           
+            let allDocsList = retVal.listDocdata;
+            allDocsList.forEach(function(data){
+              data.ContentSize = helper.getreadableFileSizeHlp(data.ContentSize);
+          });
+            component.set('v.recordDataList', allDocsList);
             component.set("v.dataLoaded", true);
         });
             $A.enqueueAction(action);
