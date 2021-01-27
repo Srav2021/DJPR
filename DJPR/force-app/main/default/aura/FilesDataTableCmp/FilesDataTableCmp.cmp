@@ -1,0 +1,35 @@
+<aura:component  Controller="ClientFileSummaryController" >
+    <aura:attribute access="public" name="columns" type="List" default="[]" description="Array of the columns object that's used to define the data types"/>
+    <aura:attribute access="public" name="recordDataList" type="List" default="[]" description="Data to be displayed"/>
+    <aura:attribute access="public" name="keyField" type="String" default="id" required="true" description="Unique Id to identify each row"/>
+    <aura:attribute access="public" name="showRowNumberColumn" type="Boolean" default="true" description="Shows or hides the row number column"/>
+    <aura:attribute access="public" name="hideCheckboxColumn" type="Boolean" default="false" description="Shows or hides the checkbox column for row selection."/>
+    <aura:attribute access="public" name="clientId" type="String" default=""  description="The active client id for what you earn"/>
+    <aura:attribute access="public" name="selectedCategory" type="String" default=""  description="The category used for uploading documents"/>
+    
+         
+        <lightning:layoutItem size="12" smallDeviceSize="12"  padding="around-small"> 
+                <lightning:fileUpload                                     
+                                    label="Upload File"
+                                    name="fileUploader"
+                                    multiple="true"
+                                    accept=".xls, .doc, .xlsx "
+                                    recordId="{!v.clientId}"
+                                    onuploadfinished="{!c.handleUploadFinishedCtr}"/>
+        </lightning:layoutItem>           
+
+                    <lightning:layoutItem size="12" flexibility="grow" smallDeviceSize="2" mediumDeviceSize="12" largeDeviceSize ="12">
+                        <lightning:datatable
+                            aura:id="dataTableId"
+                            columns="{!v.columns}"
+                            data="{!v.recordDataList}"
+                            keyField="{!v.keyField}"
+                            showRowNumberColumn="false"
+                            hideCheckboxColumn = "{!v.hideCheckboxColumn}"
+                            onrowaction="{!c.handleRowActionCtr}"
+                            resizeColumnDisabled="true"                            
+                            onsave ="{!c.onSaveCtr}"
+                        />
+                    </lightning:layoutItem>
+
+</aura:component>

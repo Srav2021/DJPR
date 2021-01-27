@@ -1,0 +1,131 @@
+<aura:component implements="forceCommunity:searchInterface,forceCommunity:availableForAllPageTypes" Controller="ClientFileSummaryController">
+    
+    <aura:attribute name="searchText" type="String" default="" description="Search term"/>
+    <aura:attribute name="searchTextClone" type="String" default="" description="Search term clone"/>
+    <aura:attribute access="private" name="issearching" type="Boolean" default="false" description="spins while searching"/> 
+
+    <aura:attribute access="private" name="ClientId" type="Id" description="Client id"/>
+    <aura:attribute access="private" name="dataLoaded" type="boolean" default="true" description="get the user name"/> 
+    <aura:attribute access="public" name="documentList" type="List" default="[]"  description="The data list used for documents"/>
+    <aura:attribute access="private" name="documentModel" type="ContentVersion"  default="{ 'sobjectType': 'ContentVersion','Title': '', 'Id': '','CreatedDate':'','ContentDocumentId':'','Category__c':''}" description="The Client document model"/>
+    <aura:attribute access="private" name="showFiles" type="boolean"  default="false" description="to hide filesection"/>
+    <aura:attribute access="private" name="documentColumns" type="List" 
+        default="[
+                    {label: 'FILE NAME', fieldName: 'Title', type: 'text',wrapText:'true', editable: true},
+                    {label: 'DESCRIPTION', fieldName: 'Description', type: 'text',wrapText:'true', editable: true},
+                    {label: 'DATE UPLOADED', fieldName: 'CreatedDate', type: 'date',typeAttributes:{day:'2-digit',month:'short',year:'2-digit',hour:'2-digit',minute:'2-digit',hour12:true}},
+                    {label: 'SIZE', fieldName: 'ContentSize', type: 'number'},
+                    {label: '',name: 'filedownload',type: 'button-icon',initialWidth: 75,typeAttributes: {label: {fieldName: 'filedownload' }, title: 'Download', name: 'filedownload', iconName: 'action:download'} },
+                    {label: '',name: 'filedelete',type: 'button-icon',initialWidth: 75,typeAttributes: {label: {fieldName: 'filedelete'},title: 'Delete',name: 'filedelete',iconName: 'action:delete'}}
+                ]"/>
+    
+    <aura:attribute access="public" name="Category1List" type="List" default="[]"  description="The data list used for documents"/>
+    <aura:attribute access="public" name="Category2List" type="List" default="[]"  description="The data list used for documents"/>
+    <aura:attribute access="public" name="Category3List" type="List" default="[]"  description="The data list used for documents"/>
+    <aura:attribute access="public" name="Category4List" type="List" default="[]"  description="The data list used for documents"/>
+    <aura:attribute access="public" name="Category5List" type="List" default="[]"  description="The data list used for documents"/>
+   
+   <aura:if isTrue="{! !v.dataLoaded}">
+        <lightning:spinner variant="brand" alternativeText="Loading...." size="large" aura:id="loadingSpinner" />
+    </aura:if>
+
+    <div class="slds-border_bottom">
+        <div class="slds-page-header" role="banner">  
+            <div class="slds-align_absolute-center" style="height:3rem">
+                <lightning:layoutItem size="4" padding="around-small"> 
+                    <div onkeyup="{! c.handleKeyUpCtr }">
+                            <lightning:input
+                                aura:id="enter-search"
+                                name="enter-search"
+                                placeholder="Search Clients for displaying Documents"
+                                type="search"
+                                isLoading="{! v.issearching }"
+                                            class="search_input"
+                            />
+                    </div>
+                </lightning:layoutItem>      
+            </div>   
+        </div>
+    </div>
+    <aura:if isTrue="{!v.showFiles}">
+    <lightning:accordion activeSectionName="Category1"> 
+    <!--Category1-->
+    <lightning:accordionSection label="{!'Category1 ('+v.Category1List.length+' Document(s) Uploaded)'}" name="Category1">
+    <lightning:layoutItem size="12" smallDeviceSize="12"  padding="around-small"> 
+        <c:FilesDataTableCmp
+            aura:id = "Category1"
+            recordDataList ="{!v.Category1List}"
+            columns = "{!v.documentColumns}"
+            keyField = "ContentDocumentId"
+            showRowNumberColumn = "false"
+            hideCheckboxColumn = "true" 
+            selectedCategory="Category1"
+            clientId="{!v.ClientId}"
+        />
+    </lightning:layoutItem>
+</lightning:accordionSection>
+    <!--Category2-->
+    <lightning:accordionSection label="{!'Category2 ('+v.Category2List.length+' Document(s) Uploaded)'}" name="Category2">
+    <lightning:layoutItem size="12" smallDeviceSize="12"  padding="around-small">  
+        <c:FilesDataTableCmp
+            aura:id = "Category2"
+            recordDataList ="{!v.Category2List}"
+            columns = "{!v.documentColumns}"
+            keyField = "ContentDocumentId"
+            showRowNumberColumn = "false"
+            hideCheckboxColumn = "true" 
+            selectedCategory="Category2"
+            clientId="{!v.ClientId}"
+        />
+    </lightning:layoutItem>
+</lightning:accordionSection>
+    <!--Category3-->
+    <lightning:accordionSection label="{!'Category3 ('+v.Category3List.length+' Document(s) Uploaded)'}" name="Category3">
+    <lightning:layoutItem size="12" smallDeviceSize="12"  padding="around-small">  
+        <c:FilesDataTableCmp
+            aura:id = "Category3"
+            recordDataList ="{!v.Category3List}"
+            columns = "{!v.documentColumns}"
+            keyField = "ContentDocumentId"
+            showRowNumberColumn = "false"
+            hideCheckboxColumn = "true" 
+            selectedCategory="Category3"
+            clientId="{!v.ClientId}"
+        />
+    </lightning:layoutItem>
+</lightning:accordionSection>
+    <!--Category4-->
+    <lightning:accordionSection label="{!'Category4 ('+v.Category4List.length+' Document(s) Uploaded)'}" name="Category4">
+    <lightning:layoutItem size="12" smallDeviceSize="12"  padding="around-small">  
+        <c:FilesDataTableCmp
+            aura:id = "Category4"
+            recordDataList ="{!v.Category4List}"
+            columns = "{!v.documentColumns}"
+            keyField = "ContentDocumentId"
+            showRowNumberColumn = "false"
+            hideCheckboxColumn = "true" 
+            selectedCategory="Category4"
+            clientId="{!v.ClientId}"
+        />
+    </lightning:layoutItem>
+</lightning:accordionSection>
+    <!--Category5-->
+    <lightning:accordionSection label="{!'Category5 ('+v.Category5List.length+' Document(s) Uploaded)'}" name="Category5">
+    <lightning:layoutItem size="12" smallDeviceSize="12"  padding="around-small">  
+        <c:FilesDataTableCmp
+            aura:id = "Category5"
+            recordDataList ="{!v.Category5List}"
+            columns = "{!v.documentColumns}"
+            keyField = "ContentDocumentId"
+            showRowNumberColumn = "false"
+            hideCheckboxColumn = "true" 
+            selectedCategory="Category5"
+            clientId="{!v.ClientId}"
+        />
+    </lightning:layoutItem>
+</lightning:accordionSection>
+
+</lightning:accordion>       
+ 
+</aura:if>    
+</aura:component>
