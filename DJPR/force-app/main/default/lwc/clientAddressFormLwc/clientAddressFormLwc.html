@@ -1,0 +1,71 @@
+<template>
+    <span class="gt-fp-selectedFormType">
+    <!-- NEW/EDIT ADDRESS FORM -->
+        <!-- PAGE ERRORS -->
+        <template if:true={hasPageErrors}>
+            <c-form-validation-error-lwc page-errors={pageErrors}></c-form-validation-error-lwc>
+        </template>
+        
+        <template if:false={dataLoaded}>
+            <lightning-spinner variant="brand" size="small" data-id="loadingTableData" alternative-text="Waiting for data to load..."></lightning-spinner>
+        </template>
+            
+        <span class={showhideclass}>            
+            <!-- CLIENT ADDRESS RECORD SECTION -->                
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" padding="around-small">
+                    <c-picklist-lwc  
+                        data-id="addressType"
+                        selected-value={clientAddressObject.Address_Type__c}
+                        object-name="Client_Address__c" 
+                        field-name="Address_Type__c"
+                        picklist-label="Address Type" 
+                        include-none="false"
+                        is-required = "true"
+                        onpicklistvaluechangeuser={handlePicklistChange}
+                        is-required-picklist-value-change-event-user
+                    ></c-picklist-lwc>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                        <lightning-input 
+                            data-id="clientAddressFormFieldId"
+                            value={clientAddressObject.Start_Date__c}
+                            name="StartDate" 
+                            label="Start Date"
+                            type="date"
+                            data-field-name="Start_Date__c"
+                            onchange={handleInputChange}
+                        ></lightning-input>
+                </lightning-layout-item>                
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                        <lightning-input 
+                            data-id="clientAddressFormFieldId"                            
+                            value={clientAddressObject.End_Date__c}
+                            name="EndDate" 
+                            label="End Date"
+                            type="date"
+                            data-field-name="End_Date__c"
+                            onchange={handleInputChange}
+                        ></lightning-input>
+                </lightning-layout-item>                
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <c-picklist-lwc  
+                        data-id="addressStatus"
+                        selected-value={clientAddressObject.Address_Status__c}
+                        object-name="Client_Address__c" 
+                        field-name="Address_Status__c"
+                        picklist-label="Address Status" 
+                        include-none="false"
+                        onpicklistvaluechangeuser={handlePicklistChange}
+                        is-required-picklist-value-change-event-user
+                    ></c-picklist-lwc>
+                </lightning-layout-item>
+            </lightning-layout>
+            <template if:true={initialiseAddressCmp}>               
+                <c-address-form-lwc data-id="addressFormId" address-record={addressObject}
+                filter-clause={addressFilterClause} initial-list-of-addresses={initialAddresses}
+                init-value={initialSelectedAddress}  default-address-type ></c-address-form-lwc>  
+            </template>
+        </span>  
+    </span>  
+</template>

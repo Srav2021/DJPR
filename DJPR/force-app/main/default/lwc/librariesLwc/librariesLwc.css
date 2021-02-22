@@ -1,0 +1,42 @@
+.left-align {
+    text-align: left;
+    font-family: "Open Sans";
+}
+.right-align {
+    text-align: right;
+    font-family: "Open Sans";
+}
+.center-align {
+    text-align: center;
+    font-family: "Open Sans";
+}
+.toggle_button {
+    background: linear-gradient(270deg, #4E00FF 0%, #0453D5 100%);
+    border-color: #0453d5;
+    color: #ffffff;
+    height: 40px;
+    width: 199.52px;
+    border-radius: 25px;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: "Open Sans";
+}
+.header_font{
+	color:#0453d5; 
+   	font-size: 15px;
+   	font-weight: 400;
+    font-family: "Open Sans";
+}
+.body_font{
+	font-size: 1rem;
+    font-family: "Open Sans";
+    color:#020e22f1;
+}
+.slds-box{
+	background: linear-gradient(90deg, #F4F8FF 0%, #F5FBFF 100%);
+}
+.title_class{
+	 color: #6a6a6a;
+    font-size: 1rem;
+    font-family: "Open Sans";
+}

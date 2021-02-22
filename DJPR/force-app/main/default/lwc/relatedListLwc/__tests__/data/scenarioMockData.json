@@ -1,0 +1,199 @@
+{
+    "COLUMNS_WITH_ACTIONS": [{
+            "label": "Comments",
+            "fieldName": "Comments__c",
+            "type": "text"
+        },
+        {
+            "label": "Amount",
+            "fieldName": "Repayments__c",
+            "type": "currency"
+        },
+        {
+            "label": "Frequency",
+            "fieldName": "Repayment_Frequency__c",
+            "type": "text"
+        },
+        {
+            "label": "Category",
+            "fieldName": "Category__c",
+            "type": "text"
+        },
+        {
+            "label": "Expense Type",
+            "fieldName": "Type__c",
+            "type": "text"
+        },
+        {
+            "label": "",
+            "name": "expenseedit",
+            "type": "button-icon",
+            "initialWidth": 75,
+            "typeAttributes": {
+                "label": {
+                    "fieldName": "expenseedit"
+                },
+                "title": "Edit",
+                "name": "expenseedit",
+                "iconName": "utility:edit"
+            }
+        },
+        {
+            "label": "",
+            "name": "expensedelete",
+            "type": "button-icon",
+            "initialWidth": 75,
+            "typeAttributes": {
+                "label": {
+                    "fieldName": "expensedelete"
+                },
+                "title": "Delete",
+                "name": "expensedelete",
+                "iconName": "action:delete"
+            }
+        }
+    ],
+    "COLUMNS_WITHOUT_ACTIONS": [{
+            "label": "Comments",
+            "fieldName": "Comments__c",
+            "type": "text"
+        },
+        {
+            "label": "Amount",
+            "fieldName": "Repayments__c",
+            "type": "currency"
+        },
+        {
+            "label": "Frequency",
+            "fieldName": "Repayment_Frequency__c",
+            "type": "text"
+        },
+        {
+            "label": "Category",
+            "fieldName": "Category__c",
+            "type": "text"
+        },
+        {
+            "label": "Expense Type",
+            "fieldName": "Type__c",
+            "type": "text"
+        }
+    ],
+    "RELATED_LIST_DATA": {
+        "relatedRecords": [{
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6IBUAY1"
+            },
+            {
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6I1UAI2"
+            },
+            {
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6I1UAI3"
+            },
+            {
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6I1UAI4"
+            },
+            {
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6I1UAI5"
+            },
+            {
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6I1UAI6"
+            },
+            {
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6I1UAI7"
+            },
+            {
+                "Repayments__c": 999,
+                "Repayment_Frequency__c": "Monthly",
+                "Category__c": "Post Loan Rental Expense",
+                "Type__c": "Rent",
+                "Id": "a0V6C000000r6I1UAI8"
+            }
+        ],
+        "relatedSObjectPluralLabel": "Liabilities",
+        "salesforceURL": "https://podiumcrm.cs63.force.com/brokerportal/s/detail/"
+    },
+    "ROW_ACTION": {
+        "recordId": "a0V6C000000r6I1UAI",
+        "rowData": {
+            "Repayments__c": 999,
+            "Repayment_Frequency__c": "Monthly",
+            "Category__c": "Post Loan Rental Expense",
+            "Type__c": "Rent",
+            "Id": "a0V6C000000r6I1UAI"
+        },
+        "actionType": "expenseedit",
+        "useDefault": false
+    },
+    "ROW_ACTION_DEFAULT_EDIT": {
+        "recordId": "a0V6C000000r6I1UAI",
+        "rowData": {
+            "Repayments__c": 999,
+            "Repayment_Frequency__c": "Monthly",
+            "Category__c": "Post Loan Rental Expense",
+            "Type__c": "Rent",
+            "Id": "a0V6C000000r6I1UAI"
+        },
+        "actionType": "defaultedit",
+        "useDefault": true
+    },
+    "ROW_ACTION_DEFAULT_DELETE": {
+        "recordId": "a0V6C000000r6I1UAI",
+        "rowData": {
+            "Repayments__c": 999,
+            "Repayment_Frequency__c": "Monthly",
+            "Category__c": "Post Loan Rental Expense",
+            "Type__c": "Rent",
+            "Id": "a0V6C000000r6I1UAI"
+        },
+        "actionType": "defaultdelete",
+        "useDefault": true
+    },
+    "APEX_ERROR": {
+        "body": {
+            "message": "An internal server error has occurred"
+        },
+        "ok": false,
+        "status": 400,
+        "statusText": "Bad Request"
+    },
+    "DRAFT_VALUES": {
+        "draftValues": [{
+            "Comments__c": "test1",
+            "Id": "a0V6C000000r5J8UAI"
+        }]
+    },
+    "HEADER_ACTIONS": {
+        "headerLevelActions": [{
+            "label": "Add Expenses",
+            "type": "expenseadd"
+        }]
+    }
+}

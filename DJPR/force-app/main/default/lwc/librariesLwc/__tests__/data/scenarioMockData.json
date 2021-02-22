@@ -1,0 +1,169 @@
+{
+  "ALL_LIBRARIES":
+  {
+    "listLibraries":
+      [
+        { "Id": "07H2C0000008PvdUAE", "Name": "NAB", "Description": "desc"},
+        { "Id": "07H2C0000008PvdUAF", "Name": "Me", "Description": ""}
+      ]
+  },    
+  "FOLDER_CONTENTS":
+    {
+      "listContDocs": 
+        [
+          {
+            "contdocId":"0692C0000007IDlQAM",
+            "contdocTitle":"docTitle1",
+            "contdocTitleTruncated":"docTitle1",
+            "contdocTitleIndexed ": "docTitle1", 
+            "contdocDescription":"docDescription",
+            "contdocFileType" : "doctype:pdf"
+          },
+          {
+            "contdocId":"0692C0000007IDlQAN",
+            "contdocTitle":"docTitle2",
+            "contdocTitleTruncated":"docTitle2",
+            "contdocTitleIndexed ": "docTitle2", 
+            "contdocDescription":"docDescription2",
+            "contdocFileType" : "doctype:pdf"
+          }
+          
+        ],
+      "listContFolders":
+        [
+          {
+            "contdocId":"0580a000000EFdCAAW",
+            "contdocTitle":"folderTitle3",
+            "contdocTitleTruncated":"folderTitle3",
+            "contdocTitleIndexed ": "folderTitle3", 
+            "contdocDescription":"folderDescription3",
+            "contdocFileType" : "standard:folder"
+          }
+        ],
+      "listAllContents":
+      [
+        {
+          "contdocId":"0692C0000007IDlQAM",
+          "contdocTitle":"docTitle1",
+          "contdocTitleTruncated":"docTitle1",
+          "contdocTitleIndexed ": "docTitle1", 
+          "contdocDescription":"docDescription",
+          "contdocFileType" : "doctype:pdf"
+        },
+        {
+          "contdocId":"0692C0000007IDlQAN",
+          "contdocTitle":"docTitle2",
+          "contdocTitleTruncated":"docTitle2",
+          "contdocTitleIndexed ": "docTitle2", 
+          "contdocDescription":"docDescription2",
+          "contdocFileType" : "doctype:pdf"
+        },
+        {
+          "contdocId":"0580a000000EFdCAAW",
+          "contdocTitle":"folderTitle3",
+          "contdocTitleTruncated":"folderTitle3",
+          "contdocTitleIndexed ": "folderTitle3", 
+          "contdocDescription":"folderDescription3",
+          "contdocFileType" : "standard:folder"
+        }
+      ],
+      "currentFolder":
+      [
+        {
+          "Id":"0580a000000EFdCAAW",
+          "Name":"folderTitle3"
+        }
+      ],
+      "parentFolder":
+      [
+        {
+          "Id":"07H2C0000008PvdUAE",
+          "Name":"folderTitle4"
+        }
+
+      ]
+
+  },
+  "FOLDER_CONTENTS_NULL_PARENT":{
+    "listContDocs": 
+    [
+      {
+        "contdocId":"0692C0000007IDlQAM",
+        "contdocTitle":"docTitle1",
+        "contdocTitleTruncated":"docTitle1",
+        "contdocTitleIndexed ": "docTitle1", 
+        "contdocDescription":"docDescription",
+        "contdocFileType" : "doctype:pdf"
+      },
+      {
+        "contdocId":"0692C0000007IDlQAN",
+        "contdocTitle":"docTitle2",
+        "contdocTitleTruncated":"docTitle2",
+        "contdocTitleIndexed ": "docTitle2", 
+        "contdocDescription":"docDescription2",
+        "contdocFileType" : "doctype:pdf"
+      }
+      
+    ],
+  "listContFolders":
+    [
+      {
+        "contdocId":"0580a000000EFdCAAW",
+        "contdocTitle":"folderTitle3",
+        "contdocTitleTruncated":"folderTitle3",
+        "contdocTitleIndexed ": "folderTitle3", 
+        "contdocDescription":"folderDescription3",
+        "contdocFileType" : "standard:folder"
+      }
+    ],
+  "listAllContents":
+  [
+    {
+      "contdocId":"0692C0000007IDlQAM",
+      "contdocTitle":"docTitle1",
+      "contdocTitleTruncated":"docTitle1",
+      "contdocTitleIndexed ": "docTitle1", 
+      "contdocDescription":"docDescription",
+      "contdocFileType" : "doctype:pdf"
+    },
+    {
+      "contdocId":"0692C0000007IDlQAN",
+      "contdocTitle":"docTitle2",
+      "contdocTitleTruncated":"docTitle2",
+      "contdocTitleIndexed ": "docTitle2", 
+      "contdocDescription":"docDescription2",
+      "contdocFileType" : "doctype:pdf"
+    },
+    {
+      "contdocId":"0580a000000EFdCAAW",
+      "contdocTitle":"folderTitle3",
+      "contdocTitleTruncated":"folderTitle3",
+      "contdocTitleIndexed ": "folderTitle3", 
+      "contdocDescription":"folderDescription3",
+      "contdocFileType" : "standard:folder"
+    }
+  ],
+  "currentFolder":
+  [
+    {
+      "Id":"0580a000000EFdCAAW",
+      "Name":"folderTitle3"
+    }
+  ],
+  "parentFolder":
+  [   
+
+  ]
+  },
+  "SELECTED_LIB_ROW": {
+    "detail": {
+        "row": [{ "Id": "07H2C0000008PvdUAE", "Name": "NAB", "Description": "desc"}]
+    }
+  },
+  "SORT_DATA": {
+      "detail": { "fieldName": "contdocTitleTruncated","sortDirection": "asc" }
+  } ,
+  "SORT_DATA_NONTITLE": {
+      "detail": { "fieldName": "contdocDescription","sortDirection": "asc" }
+  }       
+}

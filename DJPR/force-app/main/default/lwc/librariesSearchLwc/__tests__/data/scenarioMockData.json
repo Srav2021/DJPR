@@ -1,0 +1,122 @@
+{    
+  "ALL_LIBRARIES":
+  {
+    "listLibraries":
+      [
+        { "Id": "07H2C0000008PvdUAE", "Name": "NAB", "Description": "desc"},
+        { "Id": "07H2C0000008PvdUAF", "Name": "Me", "Description": ""}
+      ]
+  },
+  "CONTENTDOCUMENTWRAP":
+    {
+      "listDocdata": 
+        [
+          {
+            "docFileType": "doctype:image",
+            "docId": "0692C0000007IDlQAM",
+            "docLastModifiedDate": "2020-05-19",
+            "docParentName": "folder in podium docs",
+            "docPath": "- Podium Documents>folder in podium docs>line-png-image-4",
+            "docTitle": "line-png-image-4"
+          }          
+        ],
+      "listContentDocumentWrapper":
+        [
+          {
+            "expanded": true,
+             "items": [{"expanded": true,"label": "folder in podium docs","name": "07H2C0000008PvdUAE"}],
+             "label": "- Podium Documents",
+             "name": "0580a000000EFdCAAW"
+          }
+        ]
+    },
+  "SELECTED_TREE_ITEM": 
+    {
+      "detail":{ "name": "0580a000000EFdCAAW"}
+    },
+  "SELECTED_PARENT_FOLDER": 
+    {
+      "currentTarget":{"dataset": { "targetId": "0692C0000007IDlQAM"}}
+    },
+  "SELECTED_FILE": 
+    {
+      "target":{"dataset": { "targetId": "0692C0000007IDlQAM"}}
+    },
+  "FOLDER_CONTENTS":
+    {
+      "listContDocs": 
+        [
+          {
+            "contdocId":"0692C0000007IDlQAM",
+            "contdocTitle":"docTitle1",
+            "contdocTitleTruncated":"docTitle1",
+            "contdocTitleIndexed ": "docTitle1", 
+            "contdocDescription":"docDescription",
+            "contdocFileType" : "doctype:pdf"
+          },
+          {
+            "contdocId":"0692C0000007IDlQAN",
+            "contdocTitle":"docTitle2",
+            "contdocTitleTruncated":"docTitle2",
+            "contdocTitleIndexed ": "docTitle2", 
+            "contdocDescription":"docDescription2",
+            "contdocFileType" : "doctype:pdf"
+          }
+          
+        ],
+      "listContFolders":
+        [
+          {
+            "contdocId":"0580a000000EFdCAAW",
+            "contdocTitle":"folderTitle3",
+            "contdocTitleTruncated":"folderTitle3",
+            "contdocTitleIndexed ": "folderTitle3", 
+            "contdocDescription":"folderDescription3",
+            "contdocFileType" : "standard:folder"
+          }
+        ],
+      "listAllContents":
+      [
+        {
+          "contdocId":"0692C0000007IDlQAM",
+          "contdocTitle":"docTitle1",
+          "contdocTitleTruncated":"docTitle1",
+          "contdocTitleIndexed ": "docTitle1", 
+          "contdocDescription":"docDescription",
+          "contdocFileType" : "doctype:pdf"
+        },
+        {
+          "contdocId":"0692C0000007IDlQAN",
+          "contdocTitle":"docTitle2",
+          "contdocTitleTruncated":"docTitle2",
+          "contdocTitleIndexed ": "docTitle2", 
+          "contdocDescription":"docDescription2",
+          "contdocFileType" : "doctype:pdf"
+        },
+        {
+          "contdocId":"0580a000000EFdCAAW",
+          "contdocTitle":"folderTitle3",
+          "contdocTitleTruncated":"folderTitle3",
+          "contdocTitleIndexed ": "folderTitle3", 
+          "contdocDescription":"folderDescription3",
+          "contdocFileType" : "standard:folder"
+        }
+      ],
+      "currentFolder":
+      [
+        {
+          "Id":"0580a000000EFdCAAW",
+          "Name":"folderTitle3"
+        }
+      ],
+      "parentFolder":
+      [
+        {
+          "Id":"07H2C0000008PvdUAE",
+          "Name":"folderTitle4"
+        }
+
+      ]
+
+  }      
+}

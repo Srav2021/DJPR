@@ -1,0 +1,56 @@
+<template>
+    <div class="c-container slds-is-relative gt-fp-newFormContainer">
+        <template if:false={loadFileUploadForm}>
+            <!--APPLICATION SNAPSHOT RELATED LIST-->
+            <template if:true={isSnapshot}>
+                <c-related-list-lwc data-id="fileRelatedList" related-object-records={contentVersionRecords}
+                manual-data-entry max-number-of-rows={maxNumberOfRows} related-sobject-plural-label="Files"
+                override-view-all columns={snapshotColumns} lookup-field-name="Id" row-id-field-name="ContentDocumentId"
+                sobject-icon-name="custom:custom31" resize-column-disabled
+                onfiledownload={handleFileDownload} onfiledelete={handleFileDelete} onfileadd={handleFileAdd}
+                onfileview={handleFileView} onrelatedlistrefresh={handleRelatedListRefresh}
+                environment-url={environmentURL} onviewallclick={handleViewAllClick} is-loading={isLoading}
+                is-viewing-all={isViewingAll} show-data={showData} onshowclick={handleShowClick}
+                onhideclick={handleHideClick} onviewlessclick={handleViewLessClick} is-read-only>
+                <span slot="relatedListIcon">
+                    <img src={filesIcon}>
+                </span>
+            </c-related-list-lwc>
+            </template>
+            <!--RELATED LIST-->
+            <template if:false={isSnapshot}>
+            <c-related-list-lwc data-id="fileRelatedList" related-object-records={contentVersionRecords}
+                manual-data-entry max-number-of-rows={maxNumberOfRows} related-sobject-plural-label="Files"
+                override-view-all columns={columns} lookup-field-name="Id" row-id-field-name="ContentDocumentId"
+                sobject-icon-name="custom:custom31" header-level-actions={headerLevelActions} resize-column-disabled
+                onfiledownload={handleFileDownload} onfiledelete={handleFileDelete} onfileadd={handleFileAdd}
+                onfileview={handleFileView} onrelatedlistrefresh={handleRelatedListRefresh}
+                environment-url={environmentURL} onviewallclick={handleViewAllClick} is-loading={isLoading}
+                is-viewing-all={isViewingAll} show-data={showData} onshowclick={handleShowClick}
+                onhideclick={handleHideClick} onviewlessclick={handleViewLessClick}>
+                <span slot="relatedListIcon">
+                    <img src={filesIcon}>
+                </span>
+            </c-related-list-lwc>
+            </template>
+        </template>
+        <template if:true={loadFileUploadForm}>
+            <!--FILE UPLOAD FORM-->
+            <c-form-container-lwc form-name="c-file-upload-form-lwc" data-id="fileUploadForm" is-save-new-hidden
+                is-save-hidden>
+                <span slot="formHeader">
+                    <div class="slds-align_absolute-center">
+                        <h2 class="slds-text-heading_medium">Add Files</h2>
+                    </div>
+                </span>
+                <c-file-upload-form-lwc application-record-id={applicationRecordId}
+                    onrelatedlistrender={handleRelatedListRender} onrelatedlistrefresh={handleRelatedListRefresh}>
+                </c-file-upload-form-lwc>
+            </c-form-container-lwc>
+        </template>
+        <template if:true={isLoading}>
+            <!--LOAD SPINNER-->
+            <lightning-spinner variant="brand" size="small" alternative-text="Loading"></lightning-spinner>
+        </template>
+    </div>
+</template>

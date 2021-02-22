@@ -1,0 +1,150 @@
+<template>
+    <template if:false={standardRelatedListStyle}>
+        <div class="gt-related-list-container">
+            <lightning-card>
+                        <h1 slot="title">
+                            <slot name="relatedListIcon">
+                                <lightning-icon icon-name={sobjectIconName} size="small"></lightning-icon>
+                            </slot>
+                            <slot name="relatedListHeader" class="slds-clearfix">
+                                <span class="slds-p-top_xx-small slds-m-left_x-small gt-relatedList-header">
+                                    {relatedSobjectPluralLabel}
+                                </span>
+                                <template if:true={showValidationTick}>
+                                    <span class="slds-p-around_x-small">
+                                        <lightning-icon icon-name="utility:success" variant="success" size="small">
+                                        </lightning-icon>
+                                    </span>
+                                </template>
+                                <template if:false={hideHeaderActionButtons}>
+                                    <span class="slds-float_right slds-m-right_xx-large">
+                                        <slot name="relatedListCustomActions"></slot>
+                                        <template if:true={displayAddButton}>
+                                            <template for:each={headerLevelActions} for:item='action'>
+                                                <lightning-button key={action.type} data-type={action.type} label={action.label}
+                                                    icon-name="action:new" icon-position="left"
+                                                    onclick={handleHeaderLevelClick} class="gt-relatedList-headerButton"></lightning-button>
+                                            </template>
+                                        </template>
+                                        <template if:true={displayDefaultAddButton}>
+                                            <lightning-button label={addButtonLabel} title="Add record" icon-name="action:new"
+                                                icon-position="left" onclick={handleAddNewRecord}></lightning-button>
+                                        </template>
+                                    </span>
+                                </template>
+                                
+                            </slot>
+                        </h1>
+                <!-- SET ACTIONS-->
+                        <div slot="actions" class="chevron slds-clearfix gt-chevron-paddingR">
+                            <div class="vl slds-float_left slds-m-right_x-large"></div>
+                            <div class="gt-relatedList-carosel">
+                            <template if:true={hideDataAction}>
+                                <div onclick={showTableData}>
+                                <lightning-icon icon-name="utility:chevrondown" size="large" 
+                                alternative-text="Click to hide" title="Click to hide"></lightning-icon>
+                                </div>
+                            </template>
+                            <template if:false={hideDataAction}>
+                                <div onclick={hideTableData}>
+                                    <lightning-icon icon-name="utility:chevronup" size="large"></lightning-icon>
+                                </div>
+                            </template>
+                        </div>
+                        </div>
+                <!-- SET FOOTER-->
+                <div slot="footer">
+                    <template if:true={showFooter}>
+                        <span class="slds-align_absolute-center"><a onclick={showTableData}>Show</a></span>
+                    </template>
+                    <template if:true={showData}>
+                        <div class="slds-clearfix gt-relatedListFooter">
+                            <span class="slds-float_left">
+                                <slot name="relatedListFooter">
+                                </slot>
+                            </span>
+                            <template if:false={isListView}>
+                                <template if:true={viewAll}>
+                                    <span class="slds-float_right"><a onclick={navigateToRelatedList}>View All</a></span>
+                                </template>
+                                <template if:true={viewLess}>
+                                    <span class="slds-float_right"><a onclick={hideRecordsAction}>View Less</a></span>
+                                </template>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <!--LIGHTNING DATA TABLE-->
+                <template if:true={showData}>
+                    <c-data-table-lwc data-id="dataTableCmpId" key-field={rowIdFieldName} hide-checkbox-column
+                        default-sort-direction="desc" columns={columns} domain-url={environmentUrl}
+                        handle-manual-table-data-binding record-data-list={relatedObjectRecords} errors={errors}
+                        resize-column-disabled={resizeColumnDisabled} onrowaction={handleRowAction}
+                        oninlinetablesave={handleInlineTableSave} oninlinetablecancel={handleInlineTableCancel}
+                        oncellchange={handleCellChange} onsortrecords={handleSortRecords} 
+                        all-record-data-list={allRecordDataList} is-read-only={isReadOnly}></c-data-table-lwc>
+                </template>
+            </lightning-card>
+        </div>
+    </template>
+    <template if:true={standardRelatedListStyle}>
+        <div class="gt-standard-related-list-container">
+            <lightning-card icon-name={sobjectIconName} class={iconStyle}>
+                <div slot="title">
+                    <a class="slds-card__header-link baseCard__header-title-container" onclick={navigateToRelatedList}>
+                        <span class="slds-text-heading--small slds-truncate slds-m-right--xx-small">{cardTitle}</span>
+                    </a>
+                </div>
+                <!-- SET ACTIONS-->
+                <div slot="actions">
+                    <template if:true={displayAddButton}>
+                        <template for:each={headerLevelActions} for:item='action'>
+                            <lightning-button variant="Neutral" key={action.type} label={action.label} data-type={action.type} onclick={handleHeaderLevelClick}></lightning-button>
+                        </template>
+                    </template>
+                    <template if:true={displayDefaultAddButton}>
+                        <lightning-button variant="Neutral" label="New" title="New" onclick={handleAddNewRecord}></lightning-button>
+                    </template>
+                </div>
+                <!-- SET FOOTER-->
+                <div slot="footer">
+                    <template if:true={relatedRecordSize}>
+                        <div class="slds-clearfix">
+                            <span class="slds-float_left">
+                                <slot name="relatedListFooter">
+                                </slot>
+                            </span>
+                            <template if:false={isListView}>
+                                <template if:true={viewAll}>
+                                    <span class="slds-float_right"><a onclick={navigateToRelatedList}>View All</a></span>
+                                </template>
+                                <template if:true={viewLess}>
+                                    <span class="slds-float_right"><a onclick={hideRecordsAction}>View Less</a></span>
+                                </template>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <!--LIGHTNING DATA TABLE-->
+                <template if:true={relatedRecordSize}>
+                    <div class="tableStyle">
+                        <c-data-table-lwc data-id="dataTableCmpId" key-field={rowIdFieldName} hide-checkbox-column
+                            default-sort-direction="desc" columns={columns} domain-url={environmentUrl}
+                            handle-manual-table-data-binding record-data-list={relatedObjectRecords} errors={errors}
+                            resize-column-disabled={resizeColumnDisabled} onrowaction={handleRowAction}
+                            oninlinetablesave={handleInlineTableSave} oninlinetablecancel={handleInlineTableCancel}
+                            oncellchange={handleCellChange} all-record-data-list={allRecordDataList} is-read-only={isReadOnly}></c-data-table-lwc>
+                    </div>
+                </template>
+            </lightning-card>
+        </div>
+    </template>
+    <!-- LIGHTNING SPINNER -->
+    <template if:true={isLoading}>
+        <lightning-spinner variant="brand" size="small" alternative-text="Loading"></lightning-spinner>
+    </template>
+    <!-- MODAL COMPONENT FOR DISPLAYING DELETE CONFIRMATION AND ERROR MESSAGES -->
+    <c-message-modal-lwc title={modalHeaderTitle} message={modalBodyMessage} has-action-button={hasActionButton}
+        action-label={actionLabel} onmessageactionclick={handleModalActionClick}>
+    </c-message-modal-lwc>
+</template>

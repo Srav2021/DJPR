@@ -1,0 +1,88 @@
+<template>
+    <div class="podium-custom-libraries-search">
+        <div class="slds-border_bottom slds-page-header slds-align_absolute-center" role="banner" style="height:5rem">    
+            <lightning-layout-item size="4" padding="around-small">            
+                <div onkeyup={handleKeyUpCtr}>
+                    <lightning-input  
+                        data-id="enter-search"                          
+                        name="enter-search"
+                        placeholder="Search Lender Library Documents"
+                        type="search"
+                        is-loading={isSearching}
+                        variant="label-hidden"
+                        class="search_input"
+                        onchange={handleKeyUpCtr}
+                    ></lightning-input>
+                </div>
+            </lightning-layout-item>     
+        </div>        
+         <!-- Display Search Results from here -->  
+        <div class="slds-p-around_medium" >            
+           <template if:true={resultsreturned}>
+                <div class="c-container">
+                    <lightning-layout horizontal-align="space">
+                        <lightning-layout-item size="2" flexibility="auto" padding="around-small">
+                            <div class="body_font">
+                                <lightning-tree items={items} header="Library Documents" onselect={handleSelectCtr}></lightning-tree>                             
+                            </div> 
+                        </lightning-layout-item>                                   
+                        <lightning-layout-item size="10" flexibility="auto" padding="around-small">
+                            <template if:false={viewitems}> 
+                                <div class="slds-card slds-has-bottom-magnet">  
+                                    <lightning-layout-item size="12" flexibility="auto" padding="around-small">                                    
+                                        <div class="body_font slds-text-align_center slds-text-color_inverse" style="padding:0.5rem;background:#16325c">                                        
+                                             Showing {docData.length} results for <b> "{searchTextClone}"</b>                                                                                
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                                <div class="slds-card slds-has-top-magnet">  
+                                    <lightning-layout-item size="12" flexibility="auto" padding="around-small">                                              
+                                        <template for:each={docData} for:item='docid' >
+                                            <lightning-tile type="media"  class="header_font slds-box search_result_tile" key={docid.docId}>                                                            
+                                                <lightning-layout horizontal-align="space" >
+                                                    <lightning-layout-item size="6" flexibility="auto" padding="around-small" class="left-align">
+                                                        <div class="slds-text-heading_medium" title={docid.docTitle}>
+                                                            <a  data-target-id={docid.docId} onclick={getSelectedCtr} class="view_file_details">{docid.docTitle}</a>
+                                                        </div> 
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="6" flexibility="auto" padding="around-small" class="right-align">
+                                                        <a data-target-id={docid.docId} onclick={getParentCtr} class="viewparentfolderinsearch">View: <b> {docid.docParentName}</b></a>                
+                                                    </lightning-layout-item>   
+                                                </lightning-layout>          
+                                                <lightning-icon slot="media" icon-name={docid.docFileType} size="large"></lightning-icon>
+                                                <lightning-layout-item size="12" flexibility="auto" padding="around-small" class="left-align">
+                                                    <p><b>Path: </b> {docid.docPath}</p> 
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" flexibility="auto" padding="around-small" class="left-align">
+                                                    <p><b>Description: </b> {docid.docDescription}</p>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12" flexibility="auto" padding="around-small" class="left-align">
+                                                    <p><b>LastModified: </b><lightning-formatted-date-time value={docid.docLastModifiedDate} ></lightning-formatted-date-time></p>
+                                                </lightning-layout-item>                                         
+                                            </lightning-tile>
+                                        </template>
+                                    </lightning-layout-item>
+                                </div>  
+                            </template>                                    
+                            <template if:true={viewitems}> 
+                                <c-libraries-lwc data-id="customLibrariesCmpId" search-id={searchId} ></c-libraries-lwc>
+                            </template>
+                        </lightning-layout-item>  
+                    </lightning-layout>
+                </div> 
+            </template>
+            <template if:false={resultsreturned}>
+                <lightning-layout-item class="slds-align_absolute-center" >  
+                    <div class="slds-align_absolute-center" >
+                        <template if:true={searchperformed}>         			
+                            <div class="slds-text-align_center slds-text-color_inverse" style="padding:0.5rem;background:#16325c">
+                                No results found for <b> "{searchTextClone}"</b>
+                            </div>
+                        </template>                       
+                    </div>
+                </lightning-layout-item>          
+                <c-libraries-lwc data-id="customLibrariesCmpId2" notdisplayalllibs="false"></c-libraries-lwc>                
+            </template>            
+        </div>
+    </div>
+</template>

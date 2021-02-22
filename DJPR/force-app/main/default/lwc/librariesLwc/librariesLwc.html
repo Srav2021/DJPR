@@ -1,0 +1,104 @@
+<template>
+    <div class="podium-custom-libraries">
+       <template if:true={notdisplayalllibs}  >            
+                <div class="slds-box">
+                    <lightning-layout horizontal-align="space" >
+                        <lightning-layout-item size="4" flexibility="auto" padding="around-small" class="left-align">
+                            <div class="title_class" title={currentFolderName}>
+                                <p>Current Folder Name: <b>{currentFolderName}</b></p>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4" flexibility="auto" padding="around-small" class="center-align">   
+                            <template if:true={parentidexist}>
+                                <div class="title_class" title={parentFolderName}>
+                                    <!--  store contentFolder Id in data-Id attribute-->
+                                    <a onclick={getParentCtr} data-target-id={parentid} class="viewparentfolder">View Folder: <b>{parentFolderName}</b></a>
+                                </div>
+                            </template>
+                        </lightning-layout-item>  
+                        <lightning-layout-item size="4" flexibility="auto" padding="around-small" class="right-align">                         
+                            <div class="title_class" title={parentFolderName}>                               
+                                <a onclick={getAllLibrariesCtr} class="viewalllibraries"><b>View All Libraries</b></a>
+                            </div>                       
+                        </lightning-layout-item>
+                    </lightning-layout>    
+                    <!-- Custom DataTable to Display List Of Available ContentDocuments Start -->
+                    <lightning-layout-item flexibility="auto" padding="around-small" class="slds-has-flexi-truncate">
+                        <div class = "body_font">  
+                            <lightning-datatable
+                                class="contentfolderstable" 
+                                columns={columns}
+                                data={tabledata}
+                                key-field="contdocId"
+                                hide-checkbox-column="true"
+                                resize-column-disabled="true"
+                                sorted-by={sortedBy}
+                                sorted-direction={sortedDirection}
+                                default-sort-direction={defaultSortDirection}
+                                show-row-number-column="true"
+                                onrowaction={handleRowActionCtr}
+                                onsort={updateColumnSortingCtr}
+                                min-column-width ='500' 
+                                wrap-text-max-lines='5'  >
+                            </lightning-datatable>         
+                        </div> 
+                    </lightning-layout-item>
+                    <template if:true={isLoading}>
+                        <lightning-spinner alternative-text="Loading"></lightning-spinner> 
+                    </template>     
+                    <!--   Custom DataTable to Display List Of Available ContentDocuments End  -->                    
+                </div>            
+        </template>
+        <template if:false={notdisplayalllibs}>            
+                <div class="slds-box">
+                    <lightning-layout horizontal-align="spread">
+                        <lightning-layout-item>
+                                <div class="header_font">All Libraries </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <div>
+                                <lightning-button variant="brand" label="Toggle View" title="Tile/ListView" onclick={toggelViewCtr} class="toggle_button"></lightning-button>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <template if:false={viewdetailslist}>   
+                        <lightning-layout multiple-rows="true" >
+                            <template for:each={lstLibraries} for:item='lib'>                                                            
+                                <lightning-layout-item size="4" padding="around-small" key={lib.Id} >
+                                    <lightning-tile type="media"  class="header_font" >                                                            
+                                        <a  onclick={getContentCtr} data-target-id={lib.Id} class="viewlibrarycontents">{lib.Name} </a>                                                                               
+                                        <lightning-icon slot="media"  src={foldericon} variant="brand" alternative-text="Libraries" title="Libraries"  size="large"></lightning-icon>
+                                        <div class="body_font" title={lib.Description}>{lib.Description}</div>                                         
+                                    </lightning-tile>
+                                </lightning-layout-item>                                 
+                            </template>   
+                        </lightning-layout>
+                    </template>
+                    <template if:true={viewdetailslist}>
+                        <lightning-layout-item>
+                            <div class = "body_font">  
+                                <lightning-datatable
+                                    class="librariestable"
+                                    columns={librarycolumns}
+                                    data={tabledata}
+                                    key-field="Id"
+                                    hide-checkbox-column="true"
+                                    resize-column-disabled="true"
+                                    sorted-by={sortedBy}
+                                    sorted-direction={sortedDirection}
+                                    default-sort-direction={defaultSortDirection}
+                                    show-row-number-column="true"
+                                    onrowaction={handleLibRowActionCtr}
+                                    onsort={updateColumnSortingCtr}
+                                    wrap-text-max-lines='5'   >
+                                </lightning-datatable>                                
+                            </div> 
+                            <template if:true={isLoading}>
+                                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                            </template>   
+                        </lightning-layout-item>                        
+                    </template>          
+                </div>            
+        </template>
+    </div>
+</template>

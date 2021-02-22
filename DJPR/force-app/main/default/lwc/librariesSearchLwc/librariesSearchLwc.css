@@ -1,0 +1,16 @@
+.left-align {
+    text-align: left;
+}
+.right-align {
+    text-align: right;
+}
+.search_input{
+    border-color: #0453d5;
+border-radius: 25px;
+font-size: 17px;
+font-weight: 500;
+}
+.body_font{
+	font-size: 1rem;
+	font-family: "Open Sans";
+}

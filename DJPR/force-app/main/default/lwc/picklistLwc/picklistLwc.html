@@ -1,0 +1,15 @@
+<template>
+    <lightning-combobox
+        data-id="picklistComboBox"
+        name={picklistLabel}
+        label={picklistLabel}
+        required={isRequired}
+        value={selectedValue}
+        message-when-value-missing={messageWhenValueMissing}
+        disabled={isDisabled}
+        options={picklistValuesToBound}
+        variant={variant}
+        onchange={handleSelectedValueChangeUser}
+        onblur={handleBlur}>
+    </lightning-combobox>
+</template>

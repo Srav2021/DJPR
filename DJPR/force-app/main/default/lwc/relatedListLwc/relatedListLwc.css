@@ -1,0 +1,20 @@
+/* wrap text when user selects wrap instead of clip */
+.tableStyle .slds-hyphenate {
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+.cardStyle header {
+    border-bottom: solid 1px;
+    border-bottom-color: #d4d4d4;
+    padding-bottom: 10px;
+  }
+  
+  /* Below removed to fix table pushed outside of container on column width resize in UI, then brought back to address vertical scrolling on action menu */
+.slds-scrollable_x
+  {overflow-y:visible!important;overflow-x:visible!important;}
+.slds-scrollable_y
+  {overflow-y:visible!important;overflow-x:visible!important;}
+  
